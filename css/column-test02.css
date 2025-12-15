@@ -1,0 +1,75 @@
+.header, .footer {
+    background-image: url(/images/freedom.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center 35%;
+    display: none;
+    height: 200px;
+}
+
+.menus {
+    background-color: #d3b7d8;
+    color: #212529;
+    width: 100%;
+    height: 100px;
+    font-weight: 900;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover {
+        background-color: #198754;
+        color: #d3b7d8;
+    }
+}
+
+.intro {
+    border: 1px solid #f4e9f9;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px 5px #f4e9f9;
+    text-align: center;
+    h4 {
+        margin: 15px 0;
+        font-weight: 900;
+    }
+}
+
+@media screen and (min-width: 576px) {
+    .header {
+        display: block;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .menus {
+        height: 180px;
+        margin-top: 5px;
+    }
+
+    .footer {
+        border-radius: 10px 10px 0 0;
+        display: block;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .menus {
+        background-color: #f4e9f9;
+        width: 220px;
+        height: 220px;
+        margin: 25px 0;
+        border-radius: 50%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .menus {
+        background-color: #a13e97;
+        width: 260px;
+        height: 260px;
+    }
+}
+
+.active {
+    background-color: #198754;
+}

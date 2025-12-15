@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <script src="js/jquery-3.7.1.js"></script>
+    <script src="js/layout.js" defer></script>
+    <title>表單練習1</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center align-items-center vh-100">
+            <div class="col-md-6">
+                <div class="card shadow-lg">
+                    <div class="card-header h3 text-bg-success">產品建檔</div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="" class="form-label">產品名稱</label>
+                            <input type="text" class="form-control is-invalid" id="name" list="datalist" placeholder="請輸入2~8字"  minlength="2" maxlength="8">
+                            <datalist id="datalist">
+                                <option value="哈哈"></option>
+                                <option value="不哈哈"></option>
+                                <option value="嘻嘻"></option>
+                                <option value="不嘻嘻"></option>
+                            </datalist>
+                            <div class="valid-feedback">字數符合規定</div>
+                            <div class="invalid-feedback">請輸入範圍內字數</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">產品定價</label>
+                            <input type="number" value="50" min="0" max="100" class="form-control is-valid" id="price">
+                            <div class="valid-feedback">價格符合規定</div>
+                            <div class="invalid-feedback">請輸入範圍內價格</div>
+                        </div>
+                        <div class="mb-3">
+                            <select name="" class="form-select form-select-lg is-invalid" id="size" required>
+                                <option value="default" selected disabled>----請選擇包裝尺寸----</option>
+                                <option value="S">S</option>
+                                <option value="M">M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                            </select>
+                            <div class="valid-feedback">已選擇</div>
+                            <div class="invalid-feedback">請選擇</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">數量<span id="quanty_text">&ensp;</span>個</label>
+                            <input type="range" value="10" min="1" max="100" class="form-range" id="quantity">
+                        </div>
+                        <div class="mb-3">
+                            <div class="h4">貨運方式</div>
+                            <div class="form-check">
+                                <input type="checkbox" name="delivery" class="form-check-input" id="hct" value="新竹貨運">
+                                <label for="hct" class="form-check-inline">新竹貨運</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" name="delivery" class="form-check-input" id="convenience" value="7-11">
+                                <label for="convenience" class="form-check-inline">7-11</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" name="delivery" class="form-check-input" id="shopee" value="蝦皮>
+                                <label for="shopee" class="form-check-inline">蝦皮</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" name="delivery" class="form-check-input" id="icat" value="黑貓">
+                                <label for="icat" class="form-check-inline">黑貓</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="h4">付款方式</div>
+                            <div class="form-check-inline">
+                                <input type="radio" name="payment" class="form-check-input" id="cash" value="現金">
+                                <label for="cash" class="form-check-label">現金</label>
+                            </div>
+                            <div class="form-check-inline">
+                                <input type="radio" name="payment" class="form-check-input" id="atm" value="轉帳">
+                                <label for="atm" class="form-check-label">轉帳</label>
+                            </div>
+                            <div class="form-check-inline">
+                                <input type="radio" name="payment" class="form-check-input" id="line" value="Line Pay">
+                                <label for="" class="form-check-label">Line Pay</label>
+                            </div>
+                            <div class="form-check-inline">
+                                <input type="radio" name="payment" class="form-check-input" id="other" value="其他">
+                                <label for="" class="form-check-label">其他</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="h4">產品狀態</div>
+                            <div class="form-check form-switch">
+                                <input type="checkbox" class="form-check-input" id="state">
+                                <label for="state">下架</label>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-secondary">取消</button>
+                            <button class="btn btn-primary" id="ok">確認</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center align-items-center vh-100">
+            <div class="col-md-6">
+                <div class="card shadow-lg">
+                    <div class="card-header h3 text-bg-success">產品資料</div>
+                    <div class="card-body" id="mycard">
+                        <div class="mb-3" id="nodata">
+                            <div class="h4">目前尚無資料</div>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/jquery-3.7.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(function () {
+            var name = $("#name")
+            var price = $("#price")
+            var ok = $("#ok")
+            var mycard = $("#mycard")
+            var size = $("#size")
+            var quantity = $("#quantity")
+            var quantity_text = $("#quanty_text")
+            var state = $("#state")
+            var states = "下架"
+
+            quanty_text.append(quantity.val())
+
+            $(name).on("input", function () {
+                if (name.val().length > 1 && name.val().length < 9) {
+                    name.removeClass("is-invalid")
+                    name.addClass("is-valid")
+                }
+                else {
+                    name.removeClass("is-valid")
+                    name.addClass("is-invalid")
+                }
+            })
+
+            $(price).on("input", function () {
+                if (price.val() > 0 && price.val() < 101) {
+                    price.removeClass("is-invalid")
+                    price.addClass("is-valid")
+                }
+                else {
+                    price.removeClass("is-valid")
+                    price.addClass("is-invalid")
+                }
+            })
+
+            $(size).on("change", function() {
+                size.removeClass("is-invalid")
+                size.addClass("is-valid")
+            })
+
+            $(quantity).on("input", function() {
+                quantityhtml = `&ensp;${quantity.val()}`
+                quantity_text.empty()
+                quantity_text.append(quantityhtml)
+            })
+
+            $(state).on("change", function() {
+                if(state.is(":checked")) {
+                    state.next().text("上架")
+                    states = "上架"
+                }
+                else {
+                    state.next().text("下架")
+                    states = "下架"
+                }
+            })
+
+            $(ok).on("click", function () {
+                if (name.hasClass("is-valid") && price.hasClass("is-valid") && size.hasClass("is-valid")) {
+                    console.log(name.val())
+                    console.log(price.val())
+                    let deliverys = []
+                    let payment = ""
+                    
+                    $.each($("input[name = 'delivery']:checked"), function() {
+                        deliverys.push($(this).val())
+                    })
+                    
+                    $.each($("input[name = 'payment']:checked"), function() {
+                        payment = $(this).val()
+                    })
+
+                    delivery = deliverys.join(", ")
+
+                    cardhtml = 
+                    `
+                        <div class="mb-3">
+                            <div class="h4"><span>產品名稱：</span>${name.val()}</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="h4"><span>產品定價：</span>${price.val()}</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="h4"><span>包裝尺寸：</span>${size.val()}</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="h4"><span>產品數量：</span>${quantity.val()}</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="h4"><span>貨運方式：</span>${delivery}</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="h4"><span>付款方式：</span>${payment}</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="h4"><span>產品狀態：</span>${states}</div>
+                        </div>
+                        <hr>
+                    `
+
+                    $(mycard).empty()
+                    mycard.append(cardhtml)
+                }
+                
+                else {
+                    Swal.fire({
+                        title: "輸入錯誤，請重新輸入",
+                        width: 600,
+                        padding: "3em",
+                        color: "#716add",
+                        background: "#fff url(/images/trees.png)",
+                        backdrop: 
+                        `
+                            rgba(0,0,123,0.4)
+                            url("/images/nyan-cat.gif")
+                            left top
+                            no-repeat
+                        `
+                    });
+
+                    cardhtml = 
+                    `
+                        <div class="mb-3" id="nodata">
+                            <div class="h4">目前尚無資料</div>
+                            <hr>
+                        </div>
+                    `
+
+                    $(mycard).empty()
+                    mycard.append(cardhtml)
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

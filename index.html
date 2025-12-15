@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/font.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/jquery-3.7.1.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <title>個人首頁</title>
+</head>
+
+<body>
+    <header>
+        <div class="box box01"></div>
+        <div class="box box02"></div>
+        <div class="box box03"></div>
+        <div class="box box04"></div>
+        <div class="userbox"></div>
+        <div class="info">
+            <h1>五條悟</h1>
+            <hr>
+            <h4>認真負責</h4>
+            <p>微信v我2,000<span>CNY</span>，馬上帶你打贏宿儺</p>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="row g-4" id="myprotfolio">
+                
+            </div>
+        </div>
+    </main>
+    <script>
+        $(function () {
+            $.ajax({
+                type: "GET",
+                url: "json/Protfolio.json",
+                dataType: "json",
+                success: showdata,
+                error() {
+                    console.log("連線失敗")
+                }
+            })
+
+            function showdata(data) {
+                console.log(data)
+                var myprotfolio = $("#myprotfolio")
+                myprotfolio.empty()
+                for (i = 0; i < data.length; i++) {
+                    var delay = (i%3)*0.1+"s"
+                    var protfoliohtml =
+                    `
+                    <div class="col-lg-4 col-md-6 wow animate__fadeInUp" data-wow-duration="0.8s" data-wow-delay="${delay}">
+                        <div class="protfolio">
+                            <a href="${data[i].url}" class="gotolink"></a>
+                            <div class="images" style="background-image: url(images/${data[i].img})"></div>
+                            <div class="contents">
+                                <h4>作品${i}</h4>
+                                <p>${data[i].title}</p>
+                            </div>
+                        </div>
+                    </div>
+                    `
+                    myprotfolio.append(protfoliohtml)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

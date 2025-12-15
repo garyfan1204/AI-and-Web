@@ -6,449 +6,502 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/spa.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/counterup2@2.0.2/dist/index.js"></script>
     <script src="js/bootstrap.bundle.js"></script>
     <script src="js/jquery-3.7.1.js"></script>
-    <title>SPA練習</title>
-    <style>
-        body {
-            font-family: "Potta One", system-ui;
-        }
-
-        .line {
-            position: relative;
-        }
-
-        .line::before {
-            content: "";
-            width: 0.5px;
-            background-color: #000;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .host {
-            background-size: cover;
-            background-position: center;
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            transition: all 0.4s;
-
-            &:hover {
-                transform: scale(1.1);
-            }
-        }
-
-        .host02 {
-            background-image: url(images/24y.jpg);
-
-            &:hover {
-                background-image: url(images/hmmhmmhmmhaaa.jpg);
-            }
-        }
-
-        .host03 {
-            background-image: url(images/disapoint.jpg);
-
-            &:hover {
-                background-image: url(images/imsuck.jpg);
-            }
-        }
-
-        @media screen and (max-width: 991px) {
-            .line::before {
-                display: none;
-            }
-
-            .intro-text {
-                background-color: #00000044;
-                color: #ede6d6;
-                margin: 15px 0;
-            }
-        }
-    </style>
+    <script src="js/layout.js"></script>
+    <script src="js/spa.js" defer></script>
+    <title>SPA練習01</title>
 </head>
 
 <body>
-    <section id="community" class="bg-secondary">
-        <div class="container">
-            <div class="text-end">
-                <i class="fa-brands fa-facebook" style="color: #fff;"></i>
-                <i class="fa-brands fa-x-twitter" style="color: #fff;"></i>
-                <i class="fa-brands fa-instagram" style="color: #fff;"></i>
-            </div>
-        </div>
-    </section>
-    <section id="navbar">
-        <nav class="navbar navbar-expand-lg bg-dark">
+    <header>
+        <section id="community" class="bg-secondary">
             <div class="container">
-                <i class="fa-solid fa-champagne-glasses fa-2xl" style="color: #fff;"></i>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <div class="text-end">
+                    <i class="fa-brands fa-facebook" style="color: #fff;"></i>
+                    <i class="fa-brands fa-x-twitter" style="color: #fff;"></i>
+                    <i class="fa-brands fa-instagram" style="color: #fff;"></i>
+                </div>
+            </div>
+        </section>
+        <section id="navbar">
+            <nav class="navbar navbar-expand-lg bg-dark">
+                <div class="container">
+                    <i class="fa-solid fa-champagne-glasses fa-2xl" style="color: #fff;"></i>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#banner" data-target="#banner">
+                                    <i class="fa-solid fa-house"></i>
+                                    首頁
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#info" data-target="#info">
+                                    <i class="fa-solid fa-circle-info"></i>
+                                    獲獎紀錄
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#spirit" data-target="#spirit">
+                                    <i class="fa-solid fa-address-card"></i>
+                                    企業精神
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#intro" data-target="#intro">
+                                    <i class="fa-solid fa-lightbulb"></i>
+                                    企業理念
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#hosts" data-target="#hosts">
+                                    <i class="fa-solid fa-users"></i>
+                                    卡司陣容
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#price" data-target="#price">
+                                    <i class="fa-solid fa-sack-dollar"></i>
+                                    價格方案
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#signup" data-target="#signup">
+                                    <i class="fa-solid fa-address-card"></i>
+                                    趕緊報名
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#recuitment" data-target="#recuitment">
+                                    <i class="fa-solid fa-user-plus"></i>
+                                    加入我們
+                                </a>
+                            </li>
+                            <!-- <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false" style="color: #fff;">
+                                    <i class="fa-brands fa-servicestack" style="color: #fff;"></i>
+                                    服務項目
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">項目1</a></li>
+                                    <li><a class="dropdown-item" href="#">項目2</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">其他</a></li>
+                                </ul>
+                            </li> -->
+                        </ul>
+                        <div>
+                            <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#loginModal">
+                                <i class="fa-solid fa-user"></i>
+                                登入
+                            </button>
+                            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#registerModal">
+                                <i class="fa-solid fa-registered"></i>
+                                註冊
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </section>
+    </header>
+    <main>
+        <section id="banner">
+            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" style="width: 100%;">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+                        aria-label="Slide 4"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"
+                        aria-label="Slide 5"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div
+                            style="background-image: url(images/imgay.webp); background-repeat: no-repeat; background-size: cover; background-position: center; width: 100%; height: 90vh;">
+                        </div>
+                        <div class="carousel-caption caption-box d-none d-md-block bg-dark bg-opacity-50 rounded-3 p-4 text-start">
+                            <div class="carousel-badge">
+                                <i class="fa-solid fa-hand-back-fist"></i>
+                                我們的實力
+                            </div>
+                            <h1>讓派對絕不冷場的硬實力</h1>
+                            <p>The power to keep the party from getting dull.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div
+                            style="background-image: url(images/satoru.jpg); background-repeat: no-repeat; background-size: cover; background-position: center; width: 100%; height: 90vh;">
+                        </div>
+                        <div class="carousel-caption caption-box d-none d-md-block bg-dark bg-opacity-50 rounded-3 p-4 text-start">
+                            <div class="carousel-badge">
+                                <i class="fa-solid fa-people-group"></i>
+                                我們的人力
+                            </div>
+                            <h1>活躍氣氛的小丑</h1>
+                            <p>The clown to liven up the atmosphere</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div
+                            style="background-image: url(images/parent-child.jpg); background-repeat: no-repeat; background-size: cover; background-position: center; width: 100%; height: 90vh;">
+                        </div>
+                        <div class="carousel-caption caption-box d-none d-md-block bg-dark bg-opacity-50 rounded-3 p-4 text-start">
+                            <div class="carousel-badge">
+                                <i class="fa-solid fa-location-arrow"></i>
+                                我們的場地
+                            </div>
+                            <h1>適合親子同遊的場地</h1>
+                            <p>The suitable venues for family outings.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div
+                            style="background-image: url(images/coffe.jpg); background-repeat: no-repeat; background-size: cover; background-position: center; width: 100%; height: 90vh;">
+                        </div>
+                        <div class="carousel-caption caption-box d-none d-md-block bg-dark bg-opacity-50 rounded-3 p-4 text-start">
+                            <div class="carousel-badge">
+                                <i class="fa-solid fa-martini-glass"></i>
+                                我們的飲品
+                            </div>
+                            <h1>飲料無限供應</h1>
+                            <p>Unlimited beverages.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div
+                            style="background-image: url(images/yeeee.jpg); background-repeat: no-repeat; background-size: cover; background-position: center; width: 100%; height: 90vh;">
+                        </div>
+                        <div class="carousel-caption caption-box d-none d-md-block bg-dark bg-opacity-50 rounded-3 p-4 text-start">
+                            <h1>你還在等甚麼</h1>
+                            <p>What R U waiting for.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#" style="color: #fff;">
-                                <i class="fa-solid fa-house" style="color: #fff;"></i>
-                                首頁
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" style="color: #fff;">
-                                <i class="fa-solid fa-address-card" style="color: #fff;"></i>
-                                關於我們
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false" style="color: #fff;">
-                                <i class="fa-brands fa-servicestack" style="color: #fff;"></i>
-                                服務項目
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">項目1</a></li>
-                                <li><a class="dropdown-item" href="#">項目2</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">其他</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <div>
-                        <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#loginModal">
-                            <i class="fa-solid fa-user"></i>
-                            登入
-                        </button>
-                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#registerModal">
-                            <i class="fa-solid fa-registered"></i>
-                            註冊
-                        </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </section>
+        <section id="info">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-md-5"
+                        style="background-image: url(images/party.jpg); background-size: contain; background-repeat: no-repeat; background-position: center; height: 500px;">
+                    </div>
+                    <div class="col-md-7 p-5">
+                        <div class="h1">全球唯一<span class="text-success">百年老字號</span><br>專辦屁眼派對</div>
+                        <p>目前才第一年，同志仍須努力</p>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="h4">年均場次</div>
+                                <div class="h2 text-primary counter01">
+                                    52場 /
+                                    <span class="h4">年</span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="h4">獲獎項目</div>
+                                <div class="h2 text-danger counter02">
+                                    6
+                                    <span class="h4">項</span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="h4">專業認證</div>
+                                <div class="h2 text-warning counter03">
+                                    30
+                                    <span class="h4">項</span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="h4">公司據點</div>
+                                <div class="h2 text-warning counter04">
+                                    3
+                                    <span class="h4">處</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </nav>
-    </section>
-    <section id="banner">
-        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" style="width: 100%;">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
-                    aria-label="Slide 4"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"
-                    aria-label="Slide 5"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div style="background-image: url(images/imgay.webp); background-repeat: no-repeat; background-size: cover; background-position: center; width: 100%; height: 90vh;">
-                    </div>
-                    <div class="carousel-caption d-none d-md-block" style="background-color: #00000055; border-radius: 10px;">
-                        <h1>讓派對絕不冷場的硬實力</h1>
-                        <p>The power to keep the party from getting dull.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div style="background-image: url(images/user.jpg); background-repeat: no-repeat; background-size: cover; background-position: center; width: 100%; height: 90vh;">
-                    </div>
-                    <div class="carousel-caption d-none d-md-block" style="background-color: #00000055; border-radius: 10px;">
-                        <h1>活躍氣氛的小丑</h1>
-                        <p>The clown to liven up the atmosphere</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div style="background-image: url(images/parent-child.jpg); background-repeat: no-repeat; background-size: cover; background-position: center; width: 100%; height: 90vh;">
-                    </div>
-                    <div class="carousel-caption d-none d-md-block" style="background-color: #00000055; border-radius: 10px;">
-                        <h1>適合親子同遊的場地</h1>
-                        <p>The suitable venues for family outings.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div style="background-image: url(images/coffe.jpg); background-repeat: no-repeat; background-size: cover; background-position: center; width: 100%; height: 90vh;">
-                    </div>
-                    <div class="carousel-caption d-none d-md-block" style="background-color: #00000055; border-radius: 10px;">
-                        <h1>飲料無限供應</h1>
-                        <p>Unlimited beverages.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div style="background-image: url(images/yeeee.jpg); background-repeat: no-repeat; background-size: cover; background-position: center; width: 100%; height: 90vh;">
-                    </div>
-                    <div class="carousel-caption d-none d-md-block" style="background-color: #00000055; border-radius: 10px;">
-                        <h1>你還在等甚麼</h1>
-                        <p>What R U waiting for.</p>
-                    </div>
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-    </section>
-    <section id="info">
-        <div class="w-100 row align-items-center">
-            <div class="col-md-5" style="background-image: url(images/party.jpg); background-size: contain; background-repeat: no-repeat; background-position: center; height: 500px;"></div>
-            <div class="col-md-7 p-5">
-                <div class="h1">全球唯一<span class="text-success">百年老字號</span><br>專辦屁眼派對</div>
-                <p>目前才第一年，同志仍須努力</p>
+        </section>
+        <section id="spirit" class="bg-warning">
+            <div class="container">
                 <div class="row">
-                    <div class="col-md-3">
-                        <div class="h4">年均場次</div>
-                        <div class="h2 text-primary counter01">
-                            52場 /
-                            <span class="h4">年</span>
-                        </div>
+                    <div class="col-md-4 text-center">
+                        <i class="fa-solid fa-hand-middle-finger fa-8x mt-3"></i>
+                        <div class="h1 text-success mt-3">企業精神1</div>
+                        <P class="mt-3 text-muted d-none d-md-block">
+                            效率不是追求來的，是被最後期限逼出來的。
+                            因此我們的團隊擁抱每一次「看似穩定，實則混亂」的挑戰；
+                            會議永遠會開到超時、文件必定會再改三版，
+                            但最神奇的是 —— 最後還真的會做出來。
+                            雖然過程像災難現場，但這，就是我們的企業精神。
+                        </P>
                     </div>
-                    <div class="col-md-3">
-                        <div class="h4">獲獎項目</div>
-                        <div class="h2 text-danger counter02">
-                            6
-                            <span class="h4">項</span>
-                        </div>
+                    <div class="col-md-4 text-center">
+                        <i class="fa-solid fa-thumbs-down fa-8x mt-3"></i>
+                        <div class="h1 text-success mt-3">企業精神2</div>
+                        <P class="mt-3 text-muted d-none d-md-block">
+                            我們支持創意，但更支持「到現場再想」。
+                            每一場企劃都從精美提案開始，最後變成全體員工的即興表演。
+                            靈感總是在預算不足時特別旺盛，
+                            而我們的宗旨是：只要場面撐得住，那就是好創意。
+                            荒謬？混亂？沒關係，我們已經習慣了。
+                        </P>
                     </div>
-                    <div class="col-md-3">
-                        <div class="h4">專業認證</div>
-                        <div class="h2 text-warning counter03">
-                            30
-                            <span class="h4">項</span>
-                        </div>
+                    <div class="col-md-4 text-center">
+                        <i class="fa-solid fa-hand-back-fist fa-8x mt-3"></i>
+                        <div class="h1 text-success mt-3">企業精神3</div>
+                        <P class="mt-3 text-muted d-none d-md-block">
+                            公司重視團隊協作，
+                            但我們深知真正的合作，是一群人輪流拯救彼此的失誤。
+                            你幫我補簡報，我幫你圓謊，大家一起假裝一切正常。
+                            最終成果或許不是完美，但至少是大家共同的作品。
+                            這份「互相扶持、互相救火」的精神，就是我們驕傲的文化核心。
+                        </P>
                     </div>
-                    <div class="col-md-3">
-                        <div class="h4">公司據點</div>
-                        <div class="h2 text-warning counter04">
-                            3
-                            <span class="h4">處</span>
+                </div>
+            </div>
+        </section>
+        <section id="intro" class="position-relative">
+            <div class="container">
+                <div class="row justify-content-end align-items-center" style="min-height: 550px;">
+                    <div class="h-100 position-absolute start-0 col-md-5 px-0"
+                        style="background-image: url(images/doremi.jpg); background-size: cover; background-position: center;">
+                    </div>
+                    <div class="col-md-7 intro-text" style="z-index: 1;">
+                        <div class="h1 text-center">創新與進化</div>
+                        <p>
+                            在瞬息萬變的市場裡，我們每天都在思考：
+                            怎麼把昨天做的東西改得更像今天才想出來的。
+                            我們不追求華麗的突破，而是實用的升級；
+                            不模仿別人，只競爭「昨天的自己」。
+                            每一次更新都是一場冒險 —— 但至少我們還願意更新。
+                        </p>
+                        <button class="btn btn-warning">查看更多</button>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="h1 text-center">誠信與責任</div>
+                                <p>
+                                    企業可以成長、設備可以汰換，但誠信不能。
+                                    我們相信每一個承諾都必須被兌現，
+                                    即使偶爾會被現實拖慢腳步，我們仍會想辦法達成。
+                                    我們努力做到透明、誠實、負責，
+                                    因為唯有真誠才能換來信任，
+                                    而信任，就是所有關係的起點。
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="h1 text-center">專業與熱情</div>
+                                <p>
+                                    專業是我們立足的基礎，熱情是我們前進的燃料。
+                                    我們的團隊保持學習、保持好奇、保持熱血（偶爾需要靠飲料補充）。
+                                    每個專案、每位客戶、每次合作，
+                                    我們都以更扎實的技術、更細膩的品質與更認真的態度對待。
+                                    我們相信：
+                                    能把細節做好的人，才有資格談熱情。
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
+        <section id="hosts">
+            <div class="container">
+                <div class="display-5 text-center">主持人介紹</div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center">
+                            <i class="fa-solid fa-user fa-6x col-4 me-3"></i>
+                            <div>
+                                <div class="h1 text-center my-3">主持人1</div>
+                                <p>簡介：以「永遠講不清楚重點」聞名，講話繞三圈還找不到主旨，常讓來賓一臉茫然。反應慢半拍，常在節目結束後才想起要問的重要問題。觀眾最大的挑戰，就是努力不被他無止境的廢話拖進深淵。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center">
+                            <div class="host host02 col-4 me-3"></div>
+                            <div>
+                                <div class="h1 text-center my-3">主持人2</div>
+                                <p>簡介：以「冷場製造機」稱霸業界，任何話題到他嘴裡都能瞬間失去樂趣。笑話講一半就忘詞，訪問時頻頻插錯點，讓節目氣氛尷尬到能切出方塊。堪稱是讓製作單位最頭痛的主持人之一。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center">
+                            <div class="host host03 col-4 me-3"></div>
+                            <div>
+                                <div class="h1 text-center my-3">主持人3</div>
+                                <p>簡介：最擅長把節目變成自己的個人宣傳時間。搶話、打斷、離題是她的基本功。她能在來賓回答到一半時硬把話題扭回自己身上，讓觀眾懷疑這節目到底邀來賓要幹嘛。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center">
+                            <i class="fa-solid fa-user-group fa-6x col-4 me-3"></i>
+                            <div>
+                                <div class="h1 text-center my-3">主持人4</div>
+                                <p>簡介：以「讓人不自在的眼神」著名，訪問時總是用審問般的表情盯著來賓，讓對方坐立難安。他提出的問題常帶著奇怪的偏見，彷彿所有人都欠他一份解釋。觀眾看一次就壓力山大。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="price" class="position-relative">
+            <div class="container">
+                <div class="row justify-content-start align-items-center" style="min-height: 600px;">
+                    <div class="h-100 position-absolute end-0 col-lg-5 px-0"
+                        style="background-image: url(images/income.jpg); background-size: cover; background-position: center;">
+                    </div>
+                    <div class="col-lg-7 intro-text" style="z-index: 1;">
+                        <dl class="row">
+                            <dt class="col-sm-3">省到骨折入門組 — <span class="text-info    ">NT$ 3,999</span></dt>
+                            <dd class="col-sm-9">
+                                <p>最基本的設備，亮就好、能播就行。</p>
+                                <p>人員不干擾你，因為忙著修東西。</p>
+                                <p>適合想「辦個形式」的人。</p>
+                            </dd>
+    
+                            <dt class="col-sm-3">尷尬中級生標準組 — <span class="text-success">NT$ 8,800</span></dt>
+                            <dd class="col-sm-9">
+                                <p>場地會稍微裝飾，但風格隨緣。</p>
+                                <p>主持人熱情但不太好笑。</p>
+                                <p>附一壺不難喝，但也不算好喝的飲料。</p>
+                            </dd>
+    
+                            <dt class="col-sm-3">敢花就能後悔豪華組 — <span class="text-warning">NT$ 18,000</span></dt>
+                            <dd class="col-sm-9">
+                                <p>拍照看似專業，但成品可能讓你沉默。</p>
+                                <p>主持人全力帶場，但冷場仍免不了。</p>
+                                <p>飲料無限，你的後悔也無限。</p>
+                            </dd>
+    
+                            <dt class="col-sm-3">敗家勇者尊榮組 — <span class="text-danger">NT$ 38,000</span></dt>
+                            <dd class="col-sm-9">
+                                <p>場地華麗又混亂。</p>
+                                <p>四位主持人全員出擊，歡樂與災難同步加倍。</p>
+                                <p>附高級禮包，但用途未知。</p>
+                                <p>買了保證難忘，不買也會後悔。</p>
+                            </dd>
+    
+                            <dt class="col-sm-3">可追價項目</dt>
+                            <dd class="col-sm-9">
+                                <dl class="row">
+                                    <dt class="col-sm-4">熱門加購套組</dt>
+                                    <dd class="col-sm-8">
+                                        <p>假高潮氣氛包 — NT$ 2,000</p>
+                                        <p>謎之驚喜箱 — NT$ 3,999</p>
+                                        <p>混亂強化包 — NT$ 4,500</p>
+                                    </dd>
+                                </dl>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="signup">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!4v1763615624807!6m8!1m7!1sl9F89LD6NAJBge4v_RAb0Q!2m2!1d35.67269686716085!2d139.7370741086598!3f132.6427751229195!4f52.13237921938344!5f0.7820865974627469"
+                            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="" class="form-label">姓名</label>
+                        <input type="text" class="form-control">
+                        <label for="" class="form-label">人數</label>
+                        <input type="number" class="form-control">
+                        <select name="" class="form-select mt-3" id="">
+                            <option value="" selected disabled>派對類型</option>
+                            <option value="生日派對">生日派對</option>
+                            <option value="畢業派對">畢業派對</option>
+                            <option value="慶功派對">慶功派對</option>
+                        </select>
+                        <select name="" class="form-select mt-3" id="cityselect">
+                            <option value="" selected disabled>所在地區</option>
+                        </select>
+                        <div class="text-center mt-3">
+                            <button class="btn btn-primary">取消</button>
+                            <button class="btn btn-success">確認</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="recuitment">
+            <div class="container-fluid">
+                <div class="row" style="min-height: 360px;">
+                    <div class="col-lg-6"
+                        style="background-image: url(images/clown.png); background-size: cover; background-position: center;">
+                        <div class="h-100 row align-items-center">
+                            <div class="badge col-md-7" style="background-color: #00000044;">
+                                <small>加入我們</small>
+                                <div class="h3">求徵可悲小丑</div>
+                                <p>薪資待遇：無</p>
+                                <p>工作內容：譁眾取寵，你應該在車底，不應該在車裡</p>
+                                <a href="" class="btn btn-outline-danger">了解詳情</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6"
+                        style="background-image: url(images/goblin.webp); background-size: cover; background-position: center;">
+                        <div class="h-100 row align-items-center">
+                            <div class="badge col-md-7" style="background-color: #00000044;">
+                                <small>加入我們</small>
+                                <div class="h3">求徵可悲哥布林</div>
+                                <p>薪資待遇：無</p>
+                                <p>工作內容：哥布林，在一起，強大</p>
+                                <a href="" class="btn btn-outline-success">了解詳情</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer">
+            版權所有© 2025 范秝榤
         </div>
-    </section>
-    <section id="spirt" class="bg-warning">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 text-center">
-                    <i class="fa-solid fa-hand-middle-finger fa-8x mt-3"></i>
-                    <div class="h1 text-success mt-3">企業精神1</div>
-                    <P class="mt-3 text-muted d-none d-md-block">
-                        企業精神就像茶水間那台偶爾會冒煙的微波爐，大家嘴上說重要，實際上只希望它今天不要壞。我們追求卓越，但更多時候追求把事情在截止前五分鐘完成；我們提倡創新，但常常只是把舊流程換個名字。合作更是必需品，尤其是在同一份簡報上互相覆蓋內容的時候。雖然混亂、敷衍、有點荒唐，但不知怎的，這些行為最後就變成了所謂的企業精神。
-                    </P>
-                </div>
-                <div class="col-md-4 text-center">
-                    <i class="fa-solid fa-thumbs-down fa-8x mt-3"></i>
-                    <div class="h1 text-success mt-3">企業精神2</div>
-                    <P class="mt-3 text-muted d-none d-md-block">
-                        我們的企業精神大概像電梯總是剛好在別樓：不完美，但勉強能用。公司強調效率，所以大家一早就靠咖啡活著；公司強調品質，所以文件永遠要再改一次。創意被提出後通常會被放進「之後再看」的資料夾，而合作多半是三個人盯著同一頁簡報沉默。雖然過程荒謬，但也形成我們獨特的精神：一邊混亂，一邊前進。
-                    </P>
-                </div>
-                <div class="col-md-4 text-center">
-                    <i class="fa-solid fa-hand-back-fist fa-8x mt-3"></i>
-                    <div class="h1 text-success mt-3">企業精神3</div>
-                    <P class="mt-3 text-muted d-none d-md-block">
-                        企業精神，就是在混亂的流程與無力的會議中努力維持清醒。公司說擁抱變化，結果每次變化都是會議延長；公司說重視創意，但創意往往被埋在備忘錄裡。合作看起來很重要，實際上是多人一起在雲端文件上互相搶游標。雖然過程讓人想嘆氣，但這些荒唐拼湊起來，反而成了一種奇妙又真實的企業精神。
-                    </P>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="intro" class="position-relative">
-        <div class="container">
-            <div class="row justify-content-end align-items-center" style="min-height: 550px;">
-                <div class="h-100 position-absolute start-0 col-md-5 px-0"
-                    style="background-image: url(images/doremi.jpg); background-size: cover; background-position: center;">
-                </div>
-                <div class="col-md-7 intro-text" style="z-index: 1;">
-                    <div class="h1 text-center">創新與進化</div>
-                    <p>在快速變動的市場裡，我們始終保持警覺與前瞻。從產品設計、品牌體驗到服務流程，每一次的調整，都不是為了跟上別人，而是為了超越昨天的自己。我們相信，創新不是一次性的突破，而是一種不斷磨練、持續迭代的態度。唯有持續增強技術力、整合資源、擁抱新工具，企業才能保持靈活、維持競爭力，並在每一個挑戰面前站得更穩、更遠。
-                    </p>
-                    <button class="btn btn-warning">查看更多</button>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="h1 text-center">誠信與責任</div>
-                            <p>企業規模可以擴張，技術可以升級，但誠信與責任，是永遠不能被犧牲的底線。無論是面對顧客、合作夥伴或員工，我們始終堅持透明、正直與尊重。每一次承諾，都代表我們願意站在第一線，用實際成果證明自己的價值。我們深信，永續經營的基礎不是行銷語言，而是真心守護他人權益、信守每一次約定。
-                            </p>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="h1 text-center">專業與熱情</div>
-                            <p>專業是企業的骨架，熱情是企業的血液。沒有專業，企業站不穩；沒有熱情，企業走不遠。我們的團隊從不停止學習，從不滿足現況。因為我們相信，每一場合作、每一個專案、每一位顧客，都值得被更好的服務、更精準的技術，以及更堅定的態度對待。我們以細節打造品質，用熱情成就信任，並以長久累積的經驗，成為顧客最可靠的夥伴。
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="hosts">
-        <div class="container">
-            <div class="display-5 text-center">主持人介紹</div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="d-flex align-items-center">
-                        <i class="fa-solid fa-user fa-6x col-4 me-3"></i>
-                        <div>
-                            <div class="h1 text-center my-3">主持人1</div>
-                            <p>簡介：以「永遠講不清楚重點」聞名，講話繞三圈還找不到主旨，常讓來賓一臉茫然。反應慢半拍，常在節目結束後才想起要問的重要問題。觀眾最大的挑戰，就是努力不被他無止境的廢話拖進深淵。
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="d-flex align-items-center">
-                        <div class="host host02 col-4 me-3"></div>
-                        <div>
-                            <div class="h1 text-center my-3">主持人2</div>
-                            <p>簡介：以「冷場製造機」稱霸業界，任何話題到他嘴裡都能瞬間失去樂趣。笑話講一半就忘詞，訪問時頻頻插錯點，讓節目氣氛尷尬到能切出方塊。堪稱是讓製作單位最頭痛的主持人之一。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="d-flex align-items-center">
-                        <div class="host host03 col-4 me-3"></div>
-                        <div>
-                            <div class="h1 text-center my-3">主持人3</div>
-                            <p>簡介：最擅長把節目變成自己的個人宣傳時間。搶話、打斷、離題是她的基本功。她能在來賓回答到一半時硬把話題扭回自己身上，讓觀眾懷疑這節目到底邀來賓要幹嘛。</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="d-flex align-items-center">
-                        <i class="fa-solid fa-user-group fa-6x col-4 me-3"></i>
-                        <div>
-                            <div class="h1 text-center my-3">主持人4</div>
-                            <p>簡介：以「讓人不自在的眼神」著名，訪問時總是用審問般的表情盯著來賓，讓對方坐立難安。他提出的問題常帶著奇怪的偏見，彷彿所有人都欠他一份解釋。觀眾看一次就壓力山大。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="price" class="position-relative">
-        <div class="container">
-            <div class="row justify-content-start align-items-center" style="min-height: 600px;">
-                <div class="h-100 position-absolute end-0 col-lg-5 px-0"
-                    style="background-image: url(images/income.jpg); background-size: cover; background-position: center;">
-                </div>
-                <div class="col-lg-7 intro-text" style="z-index: 1;">
-                    <dl class="row">
-                        <dt class="col-sm-3">窮到笑不出來入門組 — <span class="text-info    ">NT$ 3,999</span></dt>
-                        <dd class="col-sm-9">
-                            <p>適合想省錢又想後悔的人。</p>
-                            <p>提供「勉強能亮」的燈光與「自暴自棄」的音響設備，保證你放的每首歌都像從水底播放。</p>
-                            <p>工作人員會在角落滑手機，不會理你，適合不想被打擾的尷尬派對。</p>
-                        </dd>
-
-                        <dt class="col-sm-3">尷尬到冒汗標準組 — <span class="text-success">NT$ 8,800</span></dt>
-                        <dd class="col-sm-9">
-                            <p>含基本場地佈置，但佈置風格介於「幼稚園忘了畢業典禮」與「倉庫大拍賣」之間。</p>
-                            <p>主持人會假裝熱情，但整場活動的尷尬程度足以讓你質疑人生。</p>
-                            <p>贈送一壺「不確定能不能喝」的飲料。</p>
-                        </dd>
-
-                        <dt class="col-sm-3">後悔莫及豪華組 — <span class="text-warning">NT$ 18,000</span></dt>
-                        <dd class="col-sm-9">
-                            <p>擁有看似厲害但其實品質堪憂的攝影技巧，糊到讓你懷疑相機壞掉。</p>
-                            <p>主持人會努力炒熱氣氛，但每三句會有兩句冷場。</p>
-                            <p>並附贈「無限量提供卻不一定好喝」的飲品，再外加一點你講不出口的羞恥回憶。</p>
-                        </dd>
-
-                        <dt class="col-sm-3">敗家無極限尊榮組 — <span class="text-danger">NT$ 38,000</span></dt>
-                        <dd class="col-sm-9">
-                            <p>適合想體驗「花大錢讓自己更累」的客人。</p>
-                            <p>場地會佈置得華麗又混亂，像是美術班學生在午夜精神崩潰後的作品。</p>
-                            <p>主持人四位全到場，但他們的混亂程度會讓整場派對像是一場精心排練的災難。</p>
-                            <p>附有「看起來很高級但實際上不知道有沒有用」的禮品袋，讓你回家繼續困惑。</p>
-                        </dd>
-
-                        <dt class="col-sm-3">可追價項目</dt>
-                        <dd class="col-sm-9">
-                            <dl class="row">
-                                <dt class="col-sm-4">熱門加購套組</dt>
-                                <dd class="col-sm-8">
-                                    <p>尷尬小助理 — NT$ 1,500</p>
-                                    <p>預算不足煙火秀 — NT$ 4,800</p>
-                                    <p>強迫拍照紀錄組 — NT$ 3,200</p>
-                                </dd>
-                            </dl>
-                        </dd>
-                    </dl>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="data">
-        <div class="container">
-            <div class="row">
-                <div class="col-6">
-                    <iframe src="https://www.google.com/maps/embed?pb=!4v1763615624807!6m8!1m7!1sl9F89LD6NAJBge4v_RAb0Q!2m2!1d35.67269686716085!2d139.7370741086598!3f132.6427751229195!4f52.13237921938344!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-                <div class="col-6">
-                    <label for="" class="form-label">姓名</label>
-                    <input type="text" class="form-control">
-                    <label for="" class="form-label">人數</label>
-                    <input type="number" class="form-control">
-                    <select name="" class="form-select mt-3" id="">
-                        <option value="" selected disabled>派對類型</option>
-                        <option value="生日派對">生日派對</option>
-                        <option value="畢業派對">畢業派對</option>
-                        <option value="慶功派對">慶功派對</option>
-                    </select>
-                    <select name="" class="form-select mt-3" id="cityselect">
-                        <option value="" selected disabled>所在地區</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="recuitment">
-        <div class="row w-100" style="min-height: 360px;">
-            <div class="col-lg-6" style="background-image: url(images/clown.png); background-size: cover; background-position: center;">
-                <div class="h-100 row align-items-center">
-                    <div class="badge col-md-7" style="background-color: #00000044;">
-                        <small>加入我們</small>
-                        <div class="h3">求徵可悲小丑</div>
-                        <p>薪資待遇：無</p>
-                        <p>工作內容：譁眾取寵，你應該在車底，不應該在車裡</p>
-                        <a href="" class="btn btn-outline-danger">了解詳情</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6" style="background-image: url(images/goblin.webp); background-size: cover; background-position: center;">
-                <div class="h-100 row align-items-center">
-                    <div class="badge col-md-7" style="background-color: #00000044;">
-                        <small>加入我們</small>
-                        <div class="h3">求徵可悲哥布林</div>
-                        <p>薪資待遇：無</p>
-                        <p>工作內容：哥布林，在一起，強大</p>
-                        <a href="" class="btn btn-outline-success">了解詳情</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    </footer>
     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -526,56 +579,6 @@
         </div>
     </div>
     <script>
-        const counterUp = window.counterUp.default
-
-        const callback = entries => {
-            entries.forEach(entry => {
-                const el = entry.target
-                if (entry.isIntersecting && !el.classList.contains('is-visible')) {
-                    counterUp(el, {
-                        duration: 2000,
-                        delay: 16,
-                    })
-                    el.classList.add('is-visible')
-                }
-            })
-        }
-
-        const IO = new IntersectionObserver(callback, { threshold: 1 })
-
-        const el01 = document.querySelector('.counter01')
-        const el02 = document.querySelector('.counter02')
-        const el03 = document.querySelector('.counter03')
-        const el04 = document.querySelector('.counter04')
-        IO.observe(el01)
-        IO.observe(el02)
-        IO.observe(el03)
-        IO.observe(el04)
-
-        $(function() {
-            $.ajax({
-                type: "GET",
-                url: "json/CityCountyData.json",
-                dataType: "json",
-                success: showdata,
-                error() {
-                    console.log("連線失敗")
-                }
-            })
-            
-            function showdata(data) {
-                console.log(data)
-
-                data.forEach((item, key) => {
-                    let selecthtml =
-                    `
-                    <option value="${item.CityName}">${item.CityName}</option>
-                    `
-                    
-                    $("#cityselect").append(selecthtml)
-                })
-            }
-        })
     </script>
 </body>
 

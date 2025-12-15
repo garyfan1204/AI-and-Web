@@ -1,0 +1,33 @@
+@media screen and (max-width: 768px) {
+    .table-rwd thead {
+        display: none;
+    }
+
+    .table-rwd tr {
+        display: block;
+        border: 1px solid #000;
+        margin-top: 15px;
+        border-radius: 5px;
+        box-shadow: 2px 2px 2px #000;
+    }
+
+    .table-rwd td {
+        display: block;
+        overflow: hidden;
+    }
+
+    .table-rwd td::before {
+        content: attr(data-th) " : ";
+        font-weight: 900;
+        font-size: 18px;
+        width: 25%;
+        padding-right: 15px;
+        text-align: right;
+        float: left;
+    }
+
+    .table-rwd td span {
+        width: 75%;
+        float: right;
+    }
+}

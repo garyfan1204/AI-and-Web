@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --color01: #f9e8ff;   /* 淺紫背景 */
+    --color02: #d5baff;   /* 柔和紫底 */
+    --color03: #a178df;   /* 主要按鈕色 */
+    --color04: #8155c3;   /* hover 高亮紫 */
+    --color05: #6238a8;   /* 深紫文字或強調色 */
+    --color06: #3d2a72;   /* 夜晚懶人調 */
+}
+
+body {
+    background-color: var(--color02);
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.wrapper {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.banner {
+    background-image: url(/web202510/images/sofa.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    height: 500px;
+}
+
+nav {
+    background-color: var(--color03);
+    height: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+ul {
+    width: 70%;
+    display: flex;
+    justify-content: space-evenly;
+    :hover {
+        background-color: var(--color04);
+    }
+}
+
+li {
+    width: 100px;
+    font-size: 18px;
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color01);
+
+    a {
+        text-align: center;
+    }
+}
+
+main {
+    background-color: var(--color01);
+    padding: 50px;
+    text-align: center;
+    color: var(--color06);
+}
+
+.info h1,p {
+    padding: 10px 0;
+}
+
+.gotosign {
+    background-color: var(--color03);
+    width: 160px;
+    height: 40px;
+    margin: 5px auto;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 8px var(--color05);
+}
+
+.grouping {
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    >div {
+        width: 30%;
+    }
+}
+
+.img-sign {
+    height: 250px;
+    position: relative;
+    img {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+    }
+}
+
+.sign {
+    width: 100%;
+    height: 0;
+    background-color: #00000088;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    color: white;
+    font-weight: bold;
+}
+
+.img-sign:hover .sign {
+    opacity: 1;
+    height: 100%;
+    transition: height 0.5s;
+}

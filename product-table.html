@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/table-rwd.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/jquery-3.7.1.js"></script>
+    <script src="js/product-table.js" defer></script>
+    <script src="js/layout.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+    <title>產品列表</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="">db.json練習</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="product-table">產品列表</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="product-table-add">新增產品</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container pt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-10 mt-5">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-rwd">
+                            <thead>
+                                <tr>
+                                    <th>產品編號</th>
+                                    <th>產品名稱</th>
+                                    <th>產品價格</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody">
+                                <tr>
+                                    <td data-th="產品編號">x</td>
+                                    <td data-th="產品名稱">x</td>
+                                    <td data-th="產品價格">x</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center mt-3" id="mypage">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="updateModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-warning">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">編輯產品</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="id" class="form-label">產品編號</label>
+                        <input type="text" class="form-control" id="id" required disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">產品名稱</label>
+                        <input type="text" class="form-control" id="name" minlength="1" maxlength="9" required disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">產品價格</label>
+                        <input type="number" class="form-control is-valid" id="price" min="100" max="2000" required>
+                        <div class="valid-feedback">輸入正確</div>
+                        <div class="invalid-feedback">請輸入100~2000元價格</div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                    <button type="button" class="btn btn-primary" id="update">確認</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+</html>

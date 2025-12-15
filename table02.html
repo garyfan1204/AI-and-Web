@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/table-rwd.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <script src="js/jquery-3.7.1.js"></script>
+    <script src="js/layout.js" defer></script>
+    <title>表格練習2</title>
+</head>
+
+<body>
+    <div class="container">
+        <table class="table table-rwd">
+            <thead>
+                <tr>
+                    <th>餐廳名稱</th>
+                    <th>地址</th>
+                    <th>圖片</th>
+                    <th>電話</th>
+                    <th>餐廳介紹</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+                <tr>
+                    <td data-th="地址">在某個神祕的角落</td>
+                    <td data-th="餐廳名稱"><span>會員制餐廳</span></td>
+                    <td data-th="圖片"><span><img src="images/viprestaurant.jpg" class="img-fluid" alt=""></span></td>
+                    <td data-th="電話"><span>0912345678</span></td>
+                    <td data-th="餐廳介紹"><span>你可以不吃，但你一定要請你朋友吃</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        $(function() {
+            $.ajax( {
+                type: "GET",
+                url: "json/ODwsvTravelFood.json",
+                dataType: "json",
+                success: showdata,
+                error() {
+                    console.log("連線失敗")
+                }
+            })
+            
+            function showdata(data) {
+                console.log(data)
+                $("#tbody").empty()
+                
+                data.forEach((item, key) => {
+                    
+                    let myPic
+                    if(item.PicURL == "") {
+                        myPic = "images/viprestaurant.jpg"
+                    }
+                    else {
+                        myPic = item.PicURL
+                    }
+                    
+                    let tablehtml =
+                    `
+                    <tr>
+                        <td data-th="餐廳名稱"><span>${item.Name}</span></td>
+                        <td data-th="地址"><span>${item.City + item.Town + item.Address}</span></td>
+                        <td data-th="圖片">
+                            <span><img src="${myPic}" class="img-fluid img-thumbnail" title="${item.Name}" alt=""></span>
+                        </td>
+                        <td data-th="電話"><span>${item.Tel}</span></td>
+                        <td data-th="餐廳介紹"><span class="text-truncate d-inline-block" style="max-width: 320px">${item.HostWords}</span></td>
+                    </tr>
+                    `
+                    
+                    $("#tbody").append(tablehtml)
+                });
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <script src="js/jquery-3.7.1.js"></script>
+    <script src="js/layout.js" defer></script>
+    <title>表單練習2</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center align-items-center vh-100">
+            <div class="col-md-6">
+                <div class="card shadow-lg">
+                    <div class="card-header h3 text-bg-success">客製化點餐系統</div>
+                    <div class="card-body">
+                        <div class="mb-3 input-group">
+                            <input type="search" name="" class="form-control" id="">
+                            <button type="button" class="btn btn-primary">搜尋</button>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">菜名</label>
+                            <input type="text" class="form-control is-invalid" id="name" list="foodlist" placeholder="請輸入2~10字"  minlength="2" maxlength="10">
+                            <datalist id="foodlist">
+                                <option value="滷排骨"></option>
+                                <option value="雞腿便當"></option>
+                                <option value="燒肉便當"></option>
+                                <option value="香腸便當"></option>
+                            </datalist>
+                            <div class="valid-feedback">字數符合規定</div>
+                            <div class="invalid-feedback">請輸入範圍內字數</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">價格</label>
+                            <input type="number" class="form-control is-invalid" id="price" placeholder="請輸入價格60~200" min="60" max="200" step="10">
+                            <div class="valid-feedback">價格符合規定</div>
+                            <div class="invalid-feedback">請輸入範圍內價格</div>
+                        </div>
+                        <div class="mb-3">
+                            <select name="" class="form-select form-select-lg is-invalid" id="size" required>
+                                <option value="default" selected disabled>----請選擇主食----</option>
+                                <option value="白飯">白飯</option>
+                                <option value="糙米飯">糙米飯</option>
+                                <option value="麵">麵</option>
+                            </select>
+                            <div class="valid-feedback">已選擇</div>
+                            <div class="invalid-feedback">請選擇</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">分量<span id="quanty_text">&ensp;</span>%</label>
+                            <input type="range" class="form-range" id="quantity" value="20" min="0" max="100" step="20">
+                        </div>
+                        <div class="mb-3">
+                            <div class="h4">加購配菜</div>
+                            <div class="form-check">
+                                <input type="checkbox" name="side_dish" class="form-check-input" id="egg" value="滷蛋">
+                                <label for="egg" class="form-check-inline">滷蛋</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" name="side_dish" class="form-check-input" id="dried_tofu" value="豆干">
+                                <label for="dried_tofu" class="form-check-inline">豆干</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" name="side_dish" class="form-check-input" id="cabbage" value="高麗菜">
+                                <label for="cabbage" class="form-check-inline">高麗菜</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" name="side_dish" class="form-check-input" id="corn" value="玉米">
+                                <label for="corn" class="form-check-inline">玉米</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="h4">取餐方式</div>
+                            <div class="form-check-inline">
+                                <input type="radio" name="payment" class="form-check-input" id="pickup" value="自取">
+                                <label for="pickup" class="form-check-label">自取</label>
+                            </div>
+                            <div class="form-check-inline">
+                                <input type="radio" name="payment" class="form-check-input" id="side_dish" value="外送">
+                                <label for="side_dish" class="form-check-label">外送</label>
+                            </div>
+                            <div class="form-check-inline">
+                                <input type="radio" name="payment" class="form-check-input" id="uber" value="Uber">
+                                <label for="uber" class="form-check-label">Uber</label>
+                            </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="h4">要加辣嗎</div>
+                                <div class="form-check form-switch">
+                                    <input type="checkbox" class="form-check-input" id="spicy">
+                                    <label for="spicy">不辣</label>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="reset" class="btn btn-secondary">取消</button>
+                                <button class="btn btn-primary" id="ok">確認</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center align-items-center vh-100">
+            <div class="col-md-6">
+                <div class="card shadow-lg">
+                    <div class="card-header h3 text-bg-success">產品資料</div>
+                    <div class="card-body" id="mycard">
+                        <div class="mb-3" id="nodata">
+                            <div class="h4">目前尚無資料</div>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/jquery-3.7.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(function () {
+            var name = $("#name")
+            var price = $("#price")
+            var ok = $("#ok")
+            var mycard = $("#mycard")
+            var size = $("#size")
+            var quantity = $("#quantity")
+            var quantity_text = $("#quanty_text")
+            var spicy = $("#spicy")
+            var spicies = "不辣"
+
+            quanty_text.append(quantity.val())
+
+            $(name).on("input", function () {
+                if (name.val().length > 1 && name.val().length < 11) {
+                    name.removeClass("is-invalid")
+                    name.addClass("is-valid")
+                }
+                else {
+                    name.removeClass("is-valid")
+                    name.addClass("is-invalid")
+                }
+            })
+
+            $(price).on("input", function () {
+                if (price.val() > 59 && price.val() < 201) {
+                    price.removeClass("is-invalid")
+                    price.addClass("is-valid")
+                }
+                else {
+                    price.removeClass("is-valid")
+                    price.addClass("is-invalid")
+                }
+            })
+
+            $(size).on("change", function() {
+                size.removeClass("is-invalid")
+                size.addClass("is-valid")
+            })
+
+            $(quantity).on("input", function() {
+                quantityhtml = `&ensp;${quantity.val()}`
+                quantity_text.empty()
+                quantity_text.append(quantityhtml)
+            })
+
+            $(spicy).on("change", function() {
+                if(spicy.is(":checked")) {
+                    spicy.next().text("要辣")
+                    spicies = "要辣"
+                }
+                else {
+                    spicy.next().text("不辣")
+                    spicies = "不辣"
+                }
+            })
+
+            $(ok).on("click", function () {
+                if (name.hasClass("is-valid") && price.hasClass("is-valid") && size.hasClass("is-valid")) {
+                    console.log(name.val())
+                    console.log(price.val())
+                    let side_dishes = []
+                    let payment = ""
+                    
+                    $.each($("input[name = 'side_dish']:checked"), function() {
+                        side_dishes.push($(this).val())
+                    })
+                    
+                    $.each($("input[name = 'payment']:checked"), function() {
+                        payment = $(this).val()
+                    })
+
+                    side_dish = side_dishes.join(", ")
+
+                    cardhtml = 
+                    `
+                        <div class="mb-3">
+                            <div class="h4"><span>產品名稱：</span>${name.val()}</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="h4"><span>產品定價：</span>${price.val()}</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="h4"><span>包裝尺寸：</span>${size.val()}</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="h4"><span>分量：</span>${quantity.val()}</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="h4"><span>加購配菜：</span>${side_dish}</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="h4"><span>付款方式：</span>${payment}</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="h4"><span>產品狀態：</span>${spicies}</div>
+                        </div>
+                        <hr>
+                    `
+
+                    $(mycard).empty()
+                    mycard.append(cardhtml)
+                }
+                
+                else {
+                    Swal.fire({
+                        title: "輸入錯誤，請重新輸入",
+                        width: 600,
+                        padding: "3em",
+                        color: "#716add",
+                        background: "#fff url(/images/trees.png)",
+                        backdrop: 
+                        `
+                            rgba(0,0,123,0.4)
+                            url("/images/nyan-cat.gif")
+                            left top
+                            no-repeat
+                        `
+                    });
+
+                    cardhtml = 
+                    `
+                        <div class="mb-3" id="nodata">
+                            <div class="h4">目前尚無資料</div>
+                            <hr>
+                        </div>
+                    `
+
+                    $(mycard).empty()
+                    mycard.append(cardhtml)
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

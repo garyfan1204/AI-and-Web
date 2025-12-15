@@ -1,0 +1,30 @@
+.layout {
+    box-sizing: border-box;
+    width: 50px;
+    height: 50px;
+    color: #97704f;
+    border: 3px solid #97704f;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 2;
+    transition: all 0.3s;
+
+    &:hover {
+        background-color: #97704f;
+        color: #fff;
+    }
+}
+
+#toindex {
+    position: fixed;
+    left: 50px;
+    top: 80px;
+}
+
+#totop {
+    right: 50px;
+    bottom: 50px;
+}
