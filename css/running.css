@@ -27,7 +27,7 @@ a {
 }
 
 .banner {
-    background-image: url(/web202510/images/beer.jpg);
+    background-image: url(../images/beer.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -116,4 +116,5 @@ main {
     opacity: 1;
     height: 100%;
     transition: height 0.5s;
+
 }
