@@ -46,7 +46,7 @@ header {
 }
 
 .userbox {
-    background-image: url(/web202510/images/satoru.jpg);
+    background-image: url(../images/satoru.jpg);
     background-size: cover;
     background-position: center;
     position: absolute;
@@ -132,4 +132,5 @@ main {
         color: #000;
         font-size: 18px;
     }
+
 }
