@@ -27,7 +27,7 @@ a {
 }
 
 .banner {
-    background-image: url(/web202510/images/sofa.jpg);
+    background-image: url(../images/sofa.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -127,3 +127,4 @@ main {
     height: 100%;
     transition: height 0.5s;
 }
+
