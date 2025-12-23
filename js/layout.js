@@ -1,7 +1,7 @@
 $(function() {
     let btnhtml = 
     `
-        <a href="/web202510/" class="layout" id="toindex">
+        <a href="./" class="layout" id="toindex">
             <div>
                 <i class="fa-solid fa-arrow-left"></i>
             </div>
@@ -22,4 +22,5 @@ $(document).on("click", "#totop", function(e) {
     $('html, body').animate({
         scrollTop: 0
     }, 50);
+
 })
