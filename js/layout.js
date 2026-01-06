@@ -22,4 +22,5 @@ $(document).on("click", "#totop", function(e) {
     $('html, body').animate({
         scrollTop: 0
     }, 50);
+
 })
