@@ -28,15 +28,6 @@
                 </select>
             </div>
         </div>
-        <div class="row justify-content-center mt-3">
-            <div class="col-md-6">
-                <select name="" id="townsel" class="form-select form-select-lg" disabled>
-                    <option value="" selected disabled>---請選擇鄉鎮市區---</option>
-                </select>
-            </div>
-        </div>
-
-
         <div class="row justify-content-center mt-4">
             <div class="col-md-8">
                 <div class="card shadow-lg">
@@ -59,27 +50,23 @@
                         </table>
                     </div>
                 </div>
-
             </div>
             <nav aria-label="Page navigation example">
                 <ul class="pagination mt-3 justify-content-center d-flex flex-wrap" id="mypage">
-
                 </ul>
             </nav>
         </div>
     </div>
     <script>
-        var alldata = []
-        var cityTitle = []
-        var cityData = []
-        var townData = []
-        var counter = []
-        var currentPage = 0
-        var citysel = $("#citysel")
-        var townsel = $("#townsel")
-        var tbody = $("#tbody")
-        var mypage = $("#mypage")
-        var opthtml
+        let alldata = []
+        let cityTitle = []
+        let cityData = []
+        let counter = []
+        let currentPage = 0
+        let citysel = $("#citysel")
+        let tbody = $("#tbody")
+        let mypage = $("#mypage")
+        let opthtml
 
         async function init() {
             await getHotels()
@@ -90,12 +77,10 @@
             renderCityOption()
 
             citysel.on("change", function () {
-                var select_city = $(this).val()
-                var hotels = cityData[counter[select_city]]
-                var towns = [...new Set(hotels.map(item => item.PostalAddress.Town))]
-                var alldata = []
+                let select_city = $(this).val()
+                let hotels = cityData[counter[select_city]]
+                alldata = []
                 
-                renderTownOption(towns)
                 cityData[counter[select_city]].forEach((item, key) => {
                     if (key % 25 == 0) {
                         alldata.push([])
@@ -126,9 +111,8 @@
                     alldata = []
 
                     response.data.Hotels.forEach((item) => {
-                        var city = item.PostalAddress.City
+                        let city = item.PostalAddress.City
                         if (counter[city] == undefined) {
-
                             counter[city] = cityData.length
                             cityData.push(new Array())
                             cityTitle[counter[city]] = city
@@ -162,35 +146,17 @@
             })
         }
 
-        function renderTownOption(town) {
-            opthtml =
-            `
-                <option value="" selected disabled>---請選擇鄉鎮市區---</option>
-            `
-
-            townsel.prop("disable", false)
-            townsel.empty()
-            townsel.append(opthtml)
-            towns.forEach(item => {
-                opthtml =
-                `
-                    <option value="" selected disabled>${item}</option>
-                `
-                townsel.append(opthtml)
-            })
-        }
-
         function renderTable(page) {
             tbody.empty()
 
             alldata[page].forEach(item => {
-                var description = item.Description
+                let description = item.Description
 
                 if (description.length > 20) {
                     description = description.substring(0, 20) + "..."
                 }
 
-                var hotelhtml =
+                let hotelhtml =
                     `
                     <tr>
                         <td>${item.HotelID}</td>
@@ -205,7 +171,7 @@
         }
 
         function renderPage(page) {
-            var pagehtml
+            let pagehtml
             mypage.empty()
 
             if (page > 0) {
