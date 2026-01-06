@@ -58,5 +58,15 @@
     "title": "大數據練習",
     "url": "bigdata",
     "img": "bigdata.jpg"
+  },
+  {
+    "title": "圖表練習",
+    "url": "chart",
+    "img": "chart.jpg"
+  },
+  {
+    "title": "口罩地圖",
+    "url": "maskmap",
+    "img": "mask.jpg"
   }
 ]

@@ -82,7 +82,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#hosts" data-target="#hosts">
+                                <a class="nav-link" href="#recommends" data-target="#recommends">
                                     <i class="fa-solid fa-users"></i>
                                     名人推薦
                                 </a>
@@ -106,14 +106,23 @@
                                 </a>
                             </li>
                         </ul>
-                        <div>
+                        <div class="d-flex align-items-center">
                             <button class="btn btn-warning" id="loginbtn" data-bs-toggle="modal" data-bs-target="#loginModal">
-                                <i class="fa-solid fa-user"></i>
+                                <i class="fa-solid fa-right-to-bracket"></i>
                                 登入
                             </button>
                             <button class="btn btn-success" id="registerbtn" data-bs-toggle="modal" data-bs-target="#registerModal">
                                 <i class="fa-solid fa-registered"></i>
                                 註冊
+                            </button>
+                            <div class="d-none" id="welcome">歡迎 <span></span></div>
+                            <button class="btn btn-primary d-none" id="adminbtn">
+                                <i class="fa-solid fa-wrench"></i>
+                                控制台
+                            </button>
+                            <button class="btn btn-danger d-none" id="logoutbtn">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                登出
                             </button>
                         </div>
                     </div>
@@ -186,7 +195,7 @@
                         <div
                             class="carousel-caption caption-box d-none d-md-block bg-dark bg-opacity-50 rounded-3 p-4 text-start">
                             <div class="carousel-badge">
-                                <i class="fa-solid fa-martini-glass"></i>
+                                <i class="fa-solid fa-robot"></i>
                                 科幻未來/太空風格
                             </div>
                             <h1>超越現實，進入未來的邊境</h1>
@@ -204,7 +213,7 @@
                                 輕鬆遊玩
                             </div>
                             <h1>獨立遊戲文青風</h1>
-                            <p>輕鬆遊玩，享受最溫柔、最療癒的遊戲時光。</p>
+                            <p>享受最溫柔、最療癒的遊戲時光。</p>
                         </div>
                     </div>
                 </div>
@@ -351,7 +360,7 @@
                 </div>
             </div>
         </section>
-        <section id="hosts">
+        <section id="recommends">
             <div class="container">
                 <div class="display-5 text-center">強力推薦</div>
                 <div class="row">
@@ -367,7 +376,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="d-flex align-items-center">
-                            <div class="host host02 col-4 me-3"></div>
+                            <div class="recommend recommend02 col-4 me-3"></div>
                             <div>
                                 <div class="h1 text-center my-3">實況主 Nini</div>
                                 <p>我每次開新遊戲前，一定會先來這裡確認遊戲內容。因為有清楚的特色介紹、玩法概念、評價與重點整理，對需要快速掌握遊戲資訊的實況主來說實在太方便了。而且網站介面乾淨、速度快，手機也很好用。
@@ -379,7 +388,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="d-flex align-items-center">
-                            <div class="host host03 col-4 me-3"></div>
+                            <div class="recommend recommend03 col-4 me-3"></div>
                             <div>
                                 <div class="h1 text-center my-3">遊戲開發者 Leo</div>
                                 <p>作為開發者，我很清楚遊戲資訊的重要性。這個平台在介紹遊戲時不浮誇、不過度包裝，給玩家的是正確、乾淨、實用的資料。它讓更多人了解作品真正的特色，我認為對新作曝光有非常正面的價值。
@@ -550,7 +559,7 @@
                 <div class="modal-body">
                     <div class="row line">
                         <div class="col-md-6">
-                            <div class="h3">會員守則</div>
+                            <div class="h3">會員制守則</div>
                             1 = 11/(45-1)*4<br>
                             2 = -11+4-5+14<br>
                             3 = 11*-4+51-4<br>
@@ -559,8 +568,8 @@
                             6 = 1-14+5+14<br>
                             7 = 11-4+5-1-4<br>
                             <div class="form-check form-switch">
-                                <input type="checkbox" name="" id="" class="form-check-input">
-                                <label for="" class="form-label">不同意/同意</label>
+                                <input type="checkbox" name="" id="agree" class="form-check-input">
+                                <label for="" class="form-label">不同意(悲)</label>
                             </div>
                         </div>
                         <div class="col-md-6">

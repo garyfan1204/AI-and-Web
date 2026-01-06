@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/jquery-3.7.1.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+    <title>圖表練習</title>
+</head>
+
+<body>
+    <div class="container d-flex justify-content-center" style="height: 60vh;">
+        <canvas id="myChart"></canvas>
+    </div>
+    <script>
+        let myChart = null;
+        let counter = [];
+        let cityData = [];
+        let cityTitle = [];
+
+        $(function () {
+            getData()
+
+        })
+
+        function getData() {
+            axios.get("json/ODwsvTravelFood.json")
+                .then(function (response) {
+                    // console.log(response.data)
+
+                    response.data.forEach((item) => {
+                        let city = item.City
+                        if (counter[city] == undefined) {
+
+                            counter[city] = cityData.length
+                            cityData.push(new Array())
+                            cityTitle[counter[city]] = city
+                        }
+
+                        cityData[counter[city]].push(item)
+                    })
+                    // console.log(counter)
+                    // console.log(cityTitle)
+                    // console.log(cityData)
+                    let type = "bar"
+                    let labels = cityTitle
+                    let label = "各縣市登記餐廳數"
+                    let data = cityData.map(arr => arr.length)
+                    console.log(data)
+
+                    drawChart(type, labels, label, data)
+                })
+                .catch(function (error) {
+                    console.log(error)
+                })
+                .finally(function () {
+
+                })
+
+        }
+
+        function drawChart(type, labels, label, data) {
+            if (myChart) {
+                myChart.destroy()
+            }
+
+            let ctx = $("#myChart");
+            myChart = new Chart(ctx, {
+                type: type,
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: label,
+                        data: data,
+                        borderWidth: 1,
+                        backgroundColor: [
+                            '#264653',
+                            '#2A9D8F',
+                            '#8AB17D',
+                            '#A8DADC',
+                            '#457B9D',
+                            '#1D3557'
+                        ],
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

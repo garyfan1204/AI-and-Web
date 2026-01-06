@@ -40,7 +40,7 @@ header {
     color: #ffc107 !important;
 }
 
-.host {
+.host, .recommend {
     background-size: cover;
     background-position: center;
     width: 120px;
@@ -81,19 +81,19 @@ header {
     transform: translateY(50%);
 }
 
-.host02 {
-    background-image: url(/web202510/images/24y.jpg);
+.host02, .recommend02 {
+    background-image: url(../images/24y.jpg);
 
     &:hover {
-        background-image: url(/web202510/images/hmmhmmhmmhaaa.jpg);
+        background-image: url(../images/hmmhmmhmmhaaa.jpg);
     }
 }
 
-.host03 {
-    background-image: url(/web202510/images/disapoint.jpg);
+.host03, .recommend03 {
+    background-image: url(../images/disapoint.jpg);
 
     &:hover {
-        background-image: url(/web202510/images/imsuck.jpg);
+        background-image: url(../images/imsuck.jpg);
     }
 }
 

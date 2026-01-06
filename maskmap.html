@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="js/layout.js" defer></script>
+    <title>口罩地圖練習</title>
+    <style>
+        .list-group {
+            height: 85vh;
+            overflow: scroll;
+            overflow-x: hidden;
+            &::-webkit-scrollbar-track {
+                background: blue;
+            }
+        }
+
+        .list-group-item:hover {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row vh-100 justify-content-center">
+            <div class="col-md-4">
+                <select name="" class="form-select form-select-lg mt-3" id="citysel">
+                    <option value="default" selected disabled>----請選擇縣市名稱----</option>
+                </select>
+                <select name="" class="form-select form-select-lg mt-3" id="areasel" disabled>
+                    <option value="default" selected disabled>----請選擇鄉鎮市區----</option>
+                </select>
+                <ul class="list-group mt-3" id="masklist">
+                </ul>
+            </div>
+            <div class="col-md-8">
+                <div class="w-100 h-100" id="map"></div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/jquery-3.7.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+        let citysel = $("#citysel")
+        let areasel = $("#areasel")
+        let masklist = $("#masklist")
+        let selectedCity
+        let selectedArea
+        let opthtml
+        let listhtml
+        let map
+        let markermap
+
+        $(async function () {
+            let citydata = await getCityData()
+            let maskdata = await getMaskData()
+            renderCityOption(citydata)
+            initMap()
+
+            citysel.on("change", function () {
+                selectedCity = $(this).val()
+                areasel.prop("disabled", false)
+
+                citydata.forEach(item => {
+                    if (item.CityName == selectedCity) {
+                        renderAreaOption(item.AreaList)
+                    }
+                })
+            })
+
+            areasel.on("change", function () {
+                selectedArea = $(this).val()
+
+                let filterdata = maskdata.features.filter(item => {
+                    return item.properties.county == selectedCity && item.properties.town == selectedArea
+                });
+
+                //產生藥局列表
+                renderMask(filterdata);
+                removeMarker()
+                renderMarker(filterdata)
+            })
+            
+            masklist.on("click", ".list-group-item", function() {
+                const key = $(this).data("key")
+                console.log(key)
+                const marker = markermap[key]
+                const latlng = marker.getLatLng()
+                
+                map.panTo(marker.getLatLng())
+                marker.openPopup()
+            })
+        })
+
+        function initMap() {
+            map = L.map('map').setView([24.171425, 120.609670], 14);
+
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            L.marker([24.171425, 120.609670]).addTo(map)
+                .bindPopup('中分署')
+                .openPopup();
+        }
+
+        function getCityData() {
+            return $.ajax({
+                type: "GET",
+                url: "json/CityCountyData.json",
+                dataType: "json"
+            })
+        }
+
+        function getMaskData() {
+            return $.ajax({
+                type: "GET",
+                url: "json/points.json",
+                dataType: "json"
+            })
+        }
+
+        function renderCityOption(data) {
+            data.forEach(item => {
+                opthtml =
+                    `
+                    <option value="${item.CityName}">${item.CityName}</option>
+                `
+                citysel.append(opthtml)
+            });
+        }
+
+        function renderAreaOption(data) {
+            areasel.empty()
+            opthtml =
+                `
+                <option value="default" selected disabled>----請選擇鄉鎮市區----</option>
+            `
+            areasel.append(opthtml)
+            data.forEach(item => {
+                opthtml =
+                    `
+                    <option value="${item.AreaName}">${item.AreaName}</option>
+                `
+                areasel.append(opthtml)
+            });
+        }
+
+        function renderMask(data) {
+            masklist.empty()
+
+            if (data.length == 0) {
+                listhtml =
+                `
+                    <li class="list-group-item">該地區並無藥局</li>                    
+                `
+                masklist.append(listhtml)
+            }
+            else {
+                data.forEach((item, key) => {
+                    listhtml =
+                        `
+                        <li class="list-group-item" data-key = ${key}>
+                            <div class="h4">${item.properties.name}</div>
+                            <div class="h4">地址：${item.properties.address}</div>
+                            <div class="h4">電話：${item.properties.phone}</div>
+                            <div class="h4">成人口罩：${item.properties.mask_adult}個</div>
+                            <div class="h4">兒童口罩：${item.properties.mask_child}個</div>
+                        </li>
+                    `
+                    masklist.append(listhtml)
+                });
+            }
+        }
+
+        function renderMarker(data) {
+            if(data.length == 0) {
+                return
+            }
+
+            markermap = {}
+
+            data.forEach((item, key) => {
+                const lat = item.geometry.coordinates[1]
+                const lng = item.geometry.coordinates[0]
+                let popuphtml = `<p>${item.properties.name}</p>`
+
+                if(key == 0) {
+                    map.panTo([lat, lng])
+                }
+                
+                const marker = L.marker([lat, lng]).addTo(map).bindPopup(popuphtml)
+                markermap[key] = marker
+            })
+            // .openPopup();
+        }
+
+        function removeMarker() {
+            map.eachLayer(function(layer) {
+                if(layer instanceof L.Marker) {
+                    map.removeLayer(layer)
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>
